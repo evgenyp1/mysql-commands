@@ -1,0 +1,1 @@
+ALTER TABLE bi_account_profiles ADD mcc                  VARCHAR(5)   DEFAULT NULL AFTER risk_profile_id;
