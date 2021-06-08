@@ -1,1 +1,4 @@
-ALTER TABLE bi_account_profiles ADD mcc                  VARCHAR(5)   DEFAULT NULL AFTER risk_profile_id;
+ALTER TABLE bi_transactions
+    ADD risk_control_group_inclusion_decision TINYINT(1) DEFAULT 0,
+    ADD risk_control_group_random_value INT UNSIGNED DEFAULT NULL
+;
