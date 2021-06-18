@@ -1,4 +1,8 @@
-ALTER TABLE bi_transactions
-    ADD risk_control_group_inclusion_decision TINYINT(1) DEFAULT 0,
-    ADD risk_control_group_random_value INT UNSIGNED DEFAULT NULL
-;
+ALTER TABLE bi_transaction_fraud_checks
+    ADD provider       VARCHAR(16) DEFAULT NULL,
+    ADD date_updated   DATETIME(3) DEFAULT NULL,
+    ADD network_status VARCHAR(64) DEFAULT NULL,
+    ADD type           VARCHAR(32) DEFAULT NULL,
+    ADD risk_level     VARCHAR(32) DEFAULT NULL,
+    ADD reason         VARCHAR(128) DEFAULT NULL,
+    ADD seller_message VARCHAR(128) DEFAULT NULL;
