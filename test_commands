@@ -1,7 +1,10 @@
-CREATE TABLE blacklist_metasites (
-                                         metasite_id VARCHAR(36) PRIMARY KEY,
-                                         created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                         expiry_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE moto_settings(
+    id VARCHAR(36) PRIMARY KEY,
+    metasite_id VARCHAR(36) NOT NULL,
+    percentage  INT UNSIGNED,
+    assigned_by VARCHAR(256) DEFAULT NULL,
+    created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    gps JSON DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE blacklist_metasites ADD INDEX (expiry_date); 
+ALTER TABLE moto_settings ADD INDEX (metasite_id); 
