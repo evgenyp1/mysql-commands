@@ -1,10 +1,1 @@
-CREATE TABLE moto_settings(
-    id VARCHAR(36) PRIMARY KEY,
-    metasite_id VARCHAR(36) NOT NULL,
-    percentage  INT UNSIGNED,
-    assigned_by VARCHAR(256) DEFAULT NULL,
-    created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    gps JSON DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-ALTER TABLE moto_settings ADD INDEX (metasite_id); 
+ALTER TABLE bi_account_review_changes ADD finding_decision_status VARCHAR(32) DEFAULT NULL AFTER review_status_reason;
