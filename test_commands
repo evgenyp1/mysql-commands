@@ -1,1 +1,2 @@
-ALTER TABLE bi_account_review_changes ADD finding_decision_status VARCHAR(32) DEFAULT NULL AFTER review_status_reason;
+ALTER TABLE bi_account_reviews ADD follow_up BOOLEAN DEFAULT FALSE AFTER manual_review_status;
+ALTER TABLE bi_account_review_changes ADD follow_up BOOLEAN DEFAULT FALSE AFTER manual_review_status;
