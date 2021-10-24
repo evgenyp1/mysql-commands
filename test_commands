@@ -1,2 +1,10 @@
-ALTER TABLE bi_account_reviews ADD follow_up BOOLEAN DEFAULT FALSE AFTER manual_review_status;
-ALTER TABLE bi_account_review_changes ADD follow_up BOOLEAN DEFAULT FALSE AFTER manual_review_status;
+CREATE TABLE bi_risk_fraud_tagging
+(
+    account_id                     VARCHAR(36) NOT NULL,
+    date_created                   DATETIME(3) NOT NULL,
+    date_updated                   DATETIME(3) NOT NULL,
+    merchant_level_tags            VARCHAR(256) DEFAULT NULL,
+    reason                         VARCHAR(256) DEFAULT NULL,
+    date_deleted                   DATETIME(3) DEFAULT NULL,
+    PRIMARY KEY (account_id)
+);
