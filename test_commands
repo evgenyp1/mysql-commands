@@ -1,2 +1,2 @@
-ALTER TABLE bi_risk_fraud_tagging ADD aggregate_version INT UNSIGNED NOT NULL DEFAULT 0 AFTER date_deleted;
-ALTER TABLE bi_risk_fraud_tagging DROP PRIMARY KEY, ADD PRIMARY KEY(account_id, aggregate_version);
+ALTER TABLE bi_account_reviews ADD dormant BOOLEAN DEFAULT FALSE AFTER follow_up;
+ALTER TABLE bi_account_review_changes ADD dormant BOOLEAN DEFAULT FALSE AFTER follow_up;
