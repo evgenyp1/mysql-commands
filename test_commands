@@ -1,2 +1,1 @@
-ALTER TABLE bi_account_review_changes ADD is_monitored BOOLEAN DEFAULT FALSE AFTER dormant;
-ALTER TABLE bi_account_reviews ADD is_monitored BOOLEAN DEFAULT FALSE AFTER dormant;
+ALTER TABLE merchant_payout_restriction_blocked_sites ADD COLUMN expiry_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
