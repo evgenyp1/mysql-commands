@@ -1,1 +1,43 @@
-ALTER TABLE merchant_payout_restriction_blocked_sites ADD COLUMN expiry_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+CREATE TABLE identiq_verifications (
+     id VARCHAR(36) PRIMARY KEY,
+     account_id VARCHAR(36),
+     score DECIMAL(5, 2) DEFAULT NULL,
+     status VARCHAR(15) DEFAULT NULL,
+     key_match BOOLEAN DEFAULT NULL,
+     key_score DECIMAL(5, 2) DEFAULT NULL,
+     created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE identiq_verifications ADD INDEX (account_id);
+
+CREATE TABLE identiq_verifications_scores (
+                                       id VARCHAR(36) PRIMARY KEY,
+                                       account_id VARCHAR(36),
+                                       eeqp DECIMAL(5, 2) DEFAULT NULL,
+                                       ueqp DECIMAL(5, 2) DEFAULT NULL,
+                                       eequ DECIMAL(5, 2) DEFAULT NULL,
+                                       pheqp DECIMAL(5, 2) DEFAULT NULL,
+                                       zip_match BOOLEAN DEFAULT NULL,
+                                       zip_score DECIMAL(5, 2) DEFAULT NULL,
+                                       last_name_match BOOLEAN DEFAULT NULL,
+                                       last_name_score DECIMAL(5, 2) DEFAULT NULL,
+                                       first_name_match BOOLEAN DEFAULT NULL,
+                                       first_name_score DECIMAL(5, 2) DEFAULT NULL,
+                                       phone_match BOOLEAN DEFAULT NULL,
+                                       phone_score DECIMAL(5, 2) DEFAULT NULL,
+                                       ip_match BOOLEAN DEFAULT NULL,
+                                       ip_score DECIMAL(5, 2) DEFAULT NULL,
+                                       date_of_birth_match BOOLEAN DEFAULT NULL,
+                                       date_of_birth_score DECIMAL(5, 2) DEFAULT NULL,
+                                       device_match BOOLEAN DEFAULT NULL,
+                                       device_score DECIMAL(5, 2) DEFAULT NULL,
+                                       ipc_match BOOLEAN DEFAULT NULL,
+                                       ipc_score DECIMAL(5, 2) DEFAULT NULL,
+                                       credit_card_match BOOLEAN DEFAULT NULL,
+                                       credit_card_score DECIMAL(5, 2) DEFAULT NULL,
+                                       document_match BOOLEAN DEFAULT NULL,
+                                       document_score DECIMAL(5, 2) DEFAULT NULL,
+                                       created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                       updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE identiq_verifications_scores ADD INDEX (account_id);
