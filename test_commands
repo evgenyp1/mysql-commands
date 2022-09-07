@@ -1,2 +1,5 @@
 ALTER TABLE identiq_verifications ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
+ALTER TABLE identiq_verifications ADD COLUMN transaction_id VARCHAR(36) DEFAULT NULL AFTER flow_type;
+
 ALTER TABLE identiq_verifications_scores ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
+ALTER TABLE identiq_verifications_scores ADD COLUMN transaction_id VARCHAR(36) DEFAULT NULL AFTER flow_type;
