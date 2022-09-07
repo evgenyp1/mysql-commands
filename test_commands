@@ -1,2 +1,2 @@
-ALTER TABLE identiq_verifications ADD COLUMN use_case_id VARCHAR(36)  DEFAULT NULL AFTER account_id;
-ALTER TABLE identiq_verifications ADD COLUMN check_key VARCHAR(36) DEFAULT NULL AFTER use_case_id;
+ALTER TABLE identiq_verifications ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
+ALTER TABLE identiq_verifications_scores ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
