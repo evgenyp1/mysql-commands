@@ -1,5 +1,33 @@
-ALTER TABLE identiq_verifications ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
-ALTER TABLE identiq_verifications ADD COLUMN transaction_id VARCHAR(36) DEFAULT NULL AFTER flow_type;
 
-ALTER TABLE identiq_verifications_scores ADD COLUMN flow_type VARCHAR(24) DEFAULT NULL AFTER account_id;
-ALTER TABLE identiq_verifications_scores ADD COLUMN transaction_id VARCHAR(36) DEFAULT NULL AFTER flow_type;
+CREATE TABLE identiq_verifications_v2 (
+                                       id VARCHAR(36) PRIMARY KEY,
+                                       account_id VARCHAR(36) DEFAULT NULL,
+                                       transaction_id VARCHAR(36) DEFAULT NULL,
+                                       request_type VARCHAR(16) DEFAULT NULL,
+                                       score DECIMAL(5, 2) DEFAULT NULL,
+                                       status INT DEFAULT NULL,
+                                       created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                       updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE identiq_verifications ADD INDEX (account_id);
+ALTER TABLE identiq_verifications ADD INDEX (transaction_id);
+
+CREATE TABLE identiq_verifications_scores_v2 (
+                                              id VARCHAR(36),
+                                              account_id VARCHAR(36) DEFAULT NULL,
+                                              transaction_id VARCHAR(36) DEFAULT NULL,
+                                              request_type VARCHAR(16) DEFAULT NULL,
+                                              field_type VARCHAR(16) DEFAULT NULL,
+                                              field_name VARCHAR(128),
+                                              field_score DECIMAL(5, 2) DEFAULT NULL,
+                                              field_valid BOOLEAN DEFAULT NULL,
+                                              field_signal_risk_level INT DEFAULT NULL,
+                                              field_signal_gibberish_score DECIMAL(5, 2) DEFAULT NULL,
+                                              field_signal_internal_links INT DEFAULT NULL,
+                                              field_signal_negative_internal_links INT DEFAULT NULL,
+                                              created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                              updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                              PRIMARY KEY (id, field_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (account_id);
+ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (transaction_id);
