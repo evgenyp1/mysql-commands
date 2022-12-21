@@ -1,33 +1,12 @@
+CREATE INDEX bi_analysis_details_created_on_idx
+    ON bi_analysis_details (created_on);
 
-CREATE TABLE identiq_verifications_v2 (
-                                       id VARCHAR(36) PRIMARY KEY,
-                                       account_id VARCHAR(36) DEFAULT NULL,
-                                       transaction_id VARCHAR(36) DEFAULT NULL,
-                                       request_type VARCHAR(16) DEFAULT NULL,
-                                       score DECIMAL(5, 2) DEFAULT NULL,
-                                       status INT DEFAULT NULL,
-                                       created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                       updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-ALTER TABLE identiq_verifications ADD INDEX (account_id);
-ALTER TABLE identiq_verifications ADD INDEX (transaction_id);
+ALTER TABLE bi_analysis_finding_details ADD COLUMN created_on DATETIME(3) DEFAULT NULL;
 
-CREATE TABLE identiq_verifications_scores_v2 (
-                                              id VARCHAR(36),
-                                              account_id VARCHAR(36) DEFAULT NULL,
-                                              transaction_id VARCHAR(36) DEFAULT NULL,
-                                              request_type VARCHAR(16) DEFAULT NULL,
-                                              field_type VARCHAR(16) DEFAULT NULL,
-                                              field_name VARCHAR(128),
-                                              field_score DECIMAL(5, 2) DEFAULT NULL,
-                                              field_valid BOOLEAN DEFAULT NULL,
-                                              field_signal_risk_level INT DEFAULT NULL,
-                                              field_signal_gibberish_score DECIMAL(5, 2) DEFAULT NULL,
-                                              field_signal_internal_links INT DEFAULT NULL,
-                                              field_signal_negative_internal_links INT DEFAULT NULL,
-                                              created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                              updated_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                              PRIMARY KEY (id, field_name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (account_id);
-ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (transaction_id);
+CREATE INDEX bi_analysis_finding_details_created_on_idx
+    ON bi_analysis_finding_details (created_on);
+
+ALTER TABLE bi_analysis_item_details ADD COLUMN created_on DATETIME(3) DEFAULT NULL;
+
+CREATE INDEX bi_analysis_item_details_created_on_idx
+    ON bi_analysis_item_details (created_on);
