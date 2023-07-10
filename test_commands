@@ -1,12 +1,2 @@
-CREATE INDEX bi_analysis_details_created_on_idx
-    ON bi_analysis_details (created_on);
-
-ALTER TABLE bi_analysis_finding_details ADD COLUMN created_on DATETIME(3) DEFAULT NULL;
-
-CREATE INDEX bi_analysis_finding_details_created_on_idx
-    ON bi_analysis_finding_details (created_on);
-
-ALTER TABLE bi_analysis_item_details ADD COLUMN created_on DATETIME(3) DEFAULT NULL;
-
-CREATE INDEX bi_analysis_item_details_created_on_idx
-    ON bi_analysis_item_details (created_on);
+ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (created_date);
+ALTER TABLE identiq_verifications_scores_v2 ADD INDEX (updated_date);
